@@ -1,5 +1,7 @@
 # Kruskal's Algorithm
 
+![Graph](ExampleGraph.png)
+
 __Needed ADT's__
 - **Union-Find**: Used for building of the minimum tree
 - **Sorted Array**: Used to store the edge lengths of the initial graph (u, v, weight)
