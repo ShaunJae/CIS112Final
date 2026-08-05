@@ -15,4 +15,4 @@ __Needed ADT's__
  - Where the question was found
  - What is the underlying ADT / algorithm 
 - Presentation
- - Both students on a 10 minute presenation
+ - Both students on a 10 minute presenation 
