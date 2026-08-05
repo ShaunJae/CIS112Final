@@ -4,7 +4,9 @@
 
 __Needed ADT's__
 - **Union-Find**: Used for building of the minimum tree
-- **Sorted Array**: Used to store the edge lengths of the initial graph (u, v, weight)
+- **Sorted List**: Used to store the edge lengths of the initial graph (u, v, weight)
+- **Weighted Graph**: Used to create the graph of weighted node connections Kruskal's algorithm will execute on
+- **Array Set**: Used to keep track of the nodes within the weighted graph
 
 ## Project Requirements
 * Code and implementation
