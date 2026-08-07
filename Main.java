@@ -6,8 +6,9 @@ import java.util.*;
 public class Main{
 
    public static void main(String[] args){
+      // Creating the initial Weighted Graph and adding it's edges
       WeightedGraph<String> nodeGraph = new WeightedGraph<String>(12);
-   
+      
       nodeGraph.addEdge(new GraphEdge<String>("a", "b", 1));
       nodeGraph.addEdge(new GraphEdge<String>("b", "c", 3));
       nodeGraph.addEdge(new GraphEdge<String>("c", "d", 1));
@@ -30,20 +31,28 @@ public class Main{
       nodeGraph.addEdge(new GraphEdge<String>("j", "k", 2));
       nodeGraph.addEdge(new GraphEdge<String>("k", "l", 2));
       
+      // Initialize the Union-Find to track node relations and 
+      //  the new Weighted Graph to store the MST
       UnionFind<String> nodeRelations = new UnionFind<String>();
       WeightedGraph<String> minimumSpanningTree = new WeightedGraph<String>(12);
       
+      // Create the MST with Kruskal's Algorithm
       for (int i = 0; i < nodeGraph.edgeCount(); i++){
          GraphEdge<String> currentEdge = nodeGraph.getEdge(i);
+         // Union-Find union(v, u) returns true if nodes can be unioned, and false if not.
+         //  If they are able to be unioned, the edge is valid
          if (nodeRelations.union(currentEdge.getV(), currentEdge.getU())){
             minimumSpanningTree.addEdge(currentEdge);
          }
       }
       
+      
+      
+      
       // Add a new edge to our MST, inherently creates a loop
       minimumSpanningTree.addEdge(new GraphEdge<String>("i", "j", 1));
       
-      // B, The edge is unknown. Find and remove it:
+      // A single edge has been added. Find the new MST:
       //  1. Collect all edges of the MST with the new edge
       //  2. Sort those edges by weight (Weighted Graph does this automatically with a SortedABList)
       //  3. Create a new Union-Find to sort nodes into groups by calling union(v, u) on the edges
@@ -51,6 +60,8 @@ public class Main{
       nodeRelations = new UnionFind<String>();
       for (int i = 0; i < minimumSpanningTree.edgeCount(); i++){
          GraphEdge<String> currentEdge = minimumSpanningTree.getEdge(i);
+         // As soon as we have an invalid union, we know we have found our largest
+         //  edge within the edge loop.
          if (!nodeRelations.union(currentEdge.getV(), currentEdge.getU())){
             minimumSpanningTree.removeEdge(currentEdge);
             break;
