@@ -15,8 +15,14 @@ __Needed ADT's__
 	* The interview question (Removing redudnant edge from minimum tree)
 * Slide deck
 	* Review problem
+		* Finding the newest MST after and edge is added to an existing valid MST, i.e. Does the new edge change the tree edges?
 	* What companies ask it
+		* Can be asked at Amazon, financial companies, and others that work with logistics networks.
 	* Where the question was found
+		* Seen on Glassdoor as a question that had been asked.
 	* What is the underlying ADT / algorithm 
+		* A Weighted Graph alongside a Union-Find which internally utilize Lists, Sets, Maps and more.
 * Presentation
 	* Both students on a 10 minute presenation 
+
+* Something I want to note is Prim's algorithm and how it's better in more dense graphs while Kruskals performs better in sparse graphs
