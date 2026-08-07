@@ -48,7 +48,6 @@ public class Main{
       
       
       
-      
       // Add a new edge to our MST, inherently creates a loop
       minimumSpanningTree.addEdge(new GraphEdge<String>("i", "j", 1));
       
