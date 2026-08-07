@@ -12,7 +12,7 @@ public class Main{
       nodeGraph.addEdge(new GraphEdge<String>("c", "d", 1));
       
       nodeGraph.addEdge(new GraphEdge<String>("a", "e", 1));
-      nodeGraph.addEdge(new GraphEdge<String>("b", "f", 1));
+      nodeGraph.addEdge(new GraphEdge<String>("b", "f", 7));
       nodeGraph.addEdge(new GraphEdge<String>("c", "g", 4));
       nodeGraph.addEdge(new GraphEdge<String>("d", "h", 1));
       
@@ -29,5 +29,15 @@ public class Main{
       nodeGraph.addEdge(new GraphEdge<String>("j", "k", 2));
       nodeGraph.addEdge(new GraphEdge<String>("k", "l", 2));
       
+      UnionFind<String> minimumConnectedTree = new UnionFind<String>();
+      
+      for (int i = 0; i < nodeGraph.edgeCount(); i++){
+         GraphEdge<String> currentEdge = nodeGraph.getEdge(i);
+         if (!minimumConnectedTree.connected(currentEdge.getV(), currentEdge.getU())){
+            minimumConnectedTree.union(currentEdge.getV(), currentEdge.getU());
+         }
+      }
+
+            
    }
 }

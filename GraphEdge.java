@@ -26,6 +26,18 @@ public class GraphEdge<T> implements Comparable<GraphEdge<T>>{
       return this.getWeight() >= other.getWeight() ? 1 : -1;
    }
    
+   public boolean equals(GraphEdge<T> other){
+      if (  this.compareTo(other) == 0 &&
+            (
+               this.getV() == other.getV() && this.getU() == other.getU() ||
+               this.getU() == other.getV() && this.getV() == other.getU()
+            )
+      ){
+         return true;
+      }
+      return false;
+   }
+   
    public T getV(){ return this.vertexV; }
    public T getU(){ return this.vertexU; }
    public int getWeight(){ return this.weight; }

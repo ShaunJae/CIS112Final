@@ -44,4 +44,16 @@ public class WeightedGraph<T>{
       edges.add(edge);
       return true;
    }
+   
+   public int nodeCount(){
+      return nodes.size();
+   }
+   
+   public int edgeCount(){
+      return edges.size();
+   }
+   
+   public GraphEdge<T> getEdge(int index){
+      return edges.get(index);
+   }
 }
