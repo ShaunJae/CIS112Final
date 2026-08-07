@@ -45,6 +45,10 @@ public class WeightedGraph<T>{
       return true;
    }
    
+   public boolean removeEdge(GraphEdge<T> edge){
+      return edges.remove(edge);
+   }
+   
    public int nodeCount(){
       return nodes.size();
    }
