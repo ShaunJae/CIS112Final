@@ -9,6 +9,12 @@ public class Main{
       // Creating the initial Weighted Graph and adding it's edges
       WeightedGraph<String> nodeGraph = new WeightedGraph<String>(12);
       
+      // This implementation of Weighted Graph uses the book's SortedABList 
+      //  structure, which has an insertion time of O(N). If itterating over
+      //  all edges the sort time for the graph edges becomes O(N^2).
+      // Standard Array Sorting or a Min-Heap (Priority Queue) should typically
+      //  be used instead.
+      
       nodeGraph.addEdge(new GraphEdge<String>("a", "b", 1));
       nodeGraph.addEdge(new GraphEdge<String>("b", "c", 3));
       nodeGraph.addEdge(new GraphEdge<String>("c", "d", 1));
@@ -36,13 +42,25 @@ public class Main{
       UnionFind<String> nodeRelations = new UnionFind<String>();
       WeightedGraph<String> minimumSpanningTree = new WeightedGraph<String>(12);
       
+      int totalWeight = 0;
+      
       // Create the MST with Kruskal's Algorithm - O(α(V))
       for (int i = 0; i < nodeGraph.edgeCount(); i++){
          GraphEdge<String> currentEdge = nodeGraph.getEdge(i);
          // Union-Find union(v, u) returns true if nodes can be unioned, and false if not.
          //  If they are able to be unioned, the edge is valid
          if (nodeRelations.union(currentEdge.getV(), currentEdge.getU())){
+         
+            System.out.println("Successful union on edge " + currentEdge.getV() + "-" + currentEdge.getU() + " with weight " + Integer.toString(currentEdge.getWeight()) + ".");
             minimumSpanningTree.addEdge(currentEdge);
+            totalWeight += currentEdge.getWeight();
+            
+            // If our new tree contains all nodes of the original tree, break the loop.
+            if (minimumSpanningTree.nodeCount() == nodeGraph.nodeCount()){
+               System.out.println("Final node found on edge addition.\n   Tree complete...\n   Final weight: " + Integer.toString(totalWeight));
+               break;
+            }
+            
          }
       }
       
