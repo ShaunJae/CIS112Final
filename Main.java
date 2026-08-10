@@ -36,7 +36,7 @@ public class Main{
       UnionFind<String> nodeRelations = new UnionFind<String>();
       WeightedGraph<String> minimumSpanningTree = new WeightedGraph<String>(12);
       
-      // Create the MST with Kruskal's Algorithm
+      // Create the MST with Kruskal's Algorithm - O(α(V))
       for (int i = 0; i < nodeGraph.edgeCount(); i++){
          GraphEdge<String> currentEdge = nodeGraph.getEdge(i);
          // Union-Find union(v, u) returns true if nodes can be unioned, and false if not.
@@ -48,7 +48,7 @@ public class Main{
       
       
       
-      // Add a new edge to our MST, inherently creates a loop
+      // Add a new edge to our MST, inherently creates a loop - O(α(V))
       minimumSpanningTree.addEdge(new GraphEdge<String>("i", "j", 1));
       
       // A single edge has been added. Find the new MST:
