@@ -44,7 +44,7 @@ public class Main{
       
       int totalWeight = 0;
       
-      // Create the MST with Kruskal's Algorithm - O(α(V))
+      // Create the MST with Kruskal's Algorithm
       for (int i = 0; i < nodeGraph.edgeCount(); i++){
          GraphEdge<String> currentEdge = nodeGraph.getEdge(i);
          // Union-Find union(v, u) returns true if nodes can be unioned, and false if not.
