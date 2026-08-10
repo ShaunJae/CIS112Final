@@ -38,7 +38,7 @@ public class UnionFind<T>
 
    // adds a new node as its own set, if not already there
    // must be called  before a node is used since this ADT does not assume a fixed-size index range
-   public void makeSet(T x)
+   public void makeSet(T x) //O(1)
    {
       if(!parent.containsKey(x))
       {
@@ -50,7 +50,7 @@ public class UnionFind<T>
 
    // return the root/representative of the set containing x
    // path compression: every node visited on the way up is re-pointed directly to the root, flattening the tree for future calls.
-   public T find(T x)
+   public T find(T x) //O(a(n))
    {
       if(!parent.containsKey(x))
       {
@@ -73,7 +73,7 @@ public class UnionFind<T>
    // union by rank: the shorter tree's root is attached under the taller tree's root, so tree height grows very slowly.
    // returns true if a merge happened (x and y were in different sets), returns false if they were already in the same set (like here)
    // this is the signal Kruskal's algorithm uses to know that adding edge (x, y) would create a cycle.
-   public boolean union(T x, T y)
+   public boolean union(T x, T y) //O(a(n))
    {
       T rootX = find(x);
       T rootY = find(y);
@@ -105,14 +105,14 @@ public class UnionFind<T>
    }
 
    // convenience method: true if x and y are currently in the same set.
-   public boolean connected(T x, T y)
+   public boolean connected(T x, T y) //O(a(n))
    {
       return find(x).equals(find(y));
    }
 
    // amount of disjoint sets remaining; for a connected graph, this should equal 1 once 
    // Kruskal's algorithm has processed enough edges to build a spanning tree
-   public int getCount()
+   public int getCount() // O(1)
    {
       return count;
    }
