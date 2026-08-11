@@ -44,7 +44,11 @@ public class Main{
       
       int totalWeight = 0;
       
-      // Create the MST with Kruskal's Algorithm
+      // Create the MST with Kruskal's Algorithmr - O(E * α(V))
+      //  Near constant time complexity because of the underlying
+      //  union-find ADT's find.
+      //  Total time complexity is typically closer to O(E log E)
+      //  due to sorting
       for (int i = 0; i < nodeGraph.edgeCount(); i++){
          GraphEdge<String> currentEdge = nodeGraph.getEdge(i);
          // Union-Find union(v, u) returns true if nodes can be unioned, and false if not.
